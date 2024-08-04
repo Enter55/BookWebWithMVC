@@ -1,4 +1,10 @@
+using Microsoft.EntityFrameworkCore;
+using Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddDbContext<DatabaseContext>(options =>
+options.UseSqlServer(builder.Configuration.GetConnectionString("ApiConnection")));
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
